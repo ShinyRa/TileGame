@@ -1,10 +1,27 @@
 <script lang="ts">
     const { tileData } = $props()
 
+    let asset = $state(tileData.asset)
     let clicked = $state(false);
+    let rotation = $state(tileData.rotation)
+
+    const onMouseWheel = (e: any) => {
+        if (clicked) {
+            if (e.deltaY > 0) {
+                rotation -= 90;
+            } else {
+                rotation += 90;
+
+            }
+        }
+    }
+
 </script>
 
-<div class="cell {clicked ? "active" : ""}" on:click={() => clicked = !clicked}><img src={tileData.asset} /></div>
+<svelte:window on:mousewheel={onMouseWheel} />
+<div class="cell {clicked ? "active" : ""}" on:click={() => clicked = !clicked}>
+    <img src={asset} style="transform: rotate({rotation}deg)" />
+</div>
 
 <style>
     img {
@@ -29,7 +46,7 @@
         width: 140px;
         height: 140px;
         transition: opacity 0.15s ease-in-out;
-        transition: transform 0.15s ease-in-out;
+        transition: transform 0.55s ease-in-out;
         transition: box-shadow 0.35s ease-in-out;
     }
     .active {

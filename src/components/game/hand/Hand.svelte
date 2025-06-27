@@ -4,11 +4,11 @@
     let { tiles } = $props()
 </script>
 
-    <div class="grid is-column-gap-0.5">
-      {#each tiles as tile}
+  <div class="grid is-column-gap-0.5">
+    {#each tiles as tile}
         <Tile tileData={tile} />
       {/each}
-    </div>
+  </div>
 
 
 <style>

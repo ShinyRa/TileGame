@@ -1,6 +1,7 @@
 export class Tile {
   asset: string = "";
   rotation: number = 0;
+  index: number = 0;
 
   constructor(options?: { asset: string; rotation: number }) {
     if (options) {

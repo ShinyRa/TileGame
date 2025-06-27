@@ -3,10 +3,11 @@ import { Tile } from "./Tile";
 export class Deck {
   tiles: Tile[];
   constructor() {
+    let i = 0;
     this.tiles = Array.from({ length: 45 }, () => new Tile());
   }
 
-  draw(num: number) {
+  draw(num: number): Tile[] {
     const cards = [];
 
     for (let i = 0; i < num; i++) {
